@@ -38,4 +38,12 @@ public class PostServiceImpl implements PostService {
     public void deletePost(long id) {
         postRepository.deleteById(id);
     }
+
+    @Override
+    public void updatePost(long id, Post post) {
+
+      System.out.println(post.getContent());
+        System.out.println(id);
+        postRepository.updateById(id,post);
+    }
 }
