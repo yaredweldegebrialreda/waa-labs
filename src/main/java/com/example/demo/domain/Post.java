@@ -25,9 +25,6 @@ public class Post {
     }
 
 
-     @ManyToOne
-     @JoinColumn(name = "user_id", nullable = false)
-     private User user;
 
 
     public long getId() {
@@ -61,11 +58,5 @@ public class Post {
         this.author = author;
     }
 
-     public User getUser() {
-         return user;
-     }
 
-     public void setUser(User user) {
-         this.user = user;
-     }
 }
