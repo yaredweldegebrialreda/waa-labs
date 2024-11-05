@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Configuration
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
