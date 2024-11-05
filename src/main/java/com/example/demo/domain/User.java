@@ -2,38 +2,30 @@ package com.example.demo.domain;
 
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-
 import java.util.HashSet;
-
 import java.util.Set;
 
 
 @Entity
 @Configuration
-
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
     String name;
     public User(long id,String name) {
         this.id = id;
         this.name = name;
 
     }
-
     public User() {
 
     }
 
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-
+    @OneToMany
+    @JoinColumn(name="user_id")
     private Set<Post> posts = new HashSet<>();
 
 

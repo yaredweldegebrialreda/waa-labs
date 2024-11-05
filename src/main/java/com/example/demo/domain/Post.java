@@ -1,6 +1,9 @@
 package com.example.demo.domain;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "posts")
@@ -25,9 +28,18 @@ public class Post {
     }
 
 
-     @ManyToOne
-     @JoinColumn(name = "user_id", nullable = false)
-     private User user;
+    @OneToMany
+    @JoinColumn(name="comment_id")
+    private Set<Comment> comments = new HashSet<>();
+
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
 
     public long getId() {
@@ -61,11 +73,5 @@ public class Post {
         this.author = author;
     }
 
-     public User getUser() {
-         return user;
-     }
 
-     public void setUser(User user) {
-         this.user = user;
-     }
 }
