@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import publicClientApi from "../api/public-client-api";
 import { postsData } from "../components/Post";
 import Posts from "../components/Posts";
 import { Post } from "../types";
@@ -8,6 +9,20 @@ const Dashboard = () => {
   const [posts, setPosts] = useState<Post[]>(postsData);
   const [name, setName] = useState("");
   const [clickedPostId, setClickedPostId] = useState(null);
+
+  const fetchPosts = async () => {
+    try {
+      const response: Post[] = await publicClientApi.get("/");
+      console.log(response);
+      setPosts(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleOnPostClicked = (id: any) => {
     setClickedPostId((prevId) => (prevId === id ? null : id));
