@@ -49,7 +49,9 @@ const EmployeeDetails = () => {
             </div>
           ))}
 
-      <Link to={`/manage-projects`}>Manage Projects</Link>
+      <Link to={`/manage-projects`} state={{ employeeDetail }}>
+        Manage Projects
+      </Link>
       <button onClick={deletehandle}>Delete</button>
       <Link to={".."}>Back</Link>
     </div>

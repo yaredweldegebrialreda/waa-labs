@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import Employee from "./Employee";
 
 const Employees = () => {

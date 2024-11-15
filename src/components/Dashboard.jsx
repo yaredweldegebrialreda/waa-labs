@@ -3,31 +3,23 @@ import AddEmployee from "./AddEmployee";
 import EmployeeDetails from "./EmployeeDetails";
 import Employees from "./Employees";
 import ManageProjects from "./ManageProjects";
+import Header from "./Header";
 
 const Dashboard = () => {
   return (
     <div>
-      <header
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Link to={`/`}>Employee</Link>
-        <Link to={`/add-employee`}>Add Emoployee</Link>
-      </header>
-
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Navigate to={"/employees"} />} />
-          <Route path="/employees" element={<Employees />}></Route>
-          <Route path="/employees/:id" element={<EmployeeDetails />} />
+          <Route path="/employees" element={<Employees />}>
+            <Route path=":id" element={<EmployeeDetails />} />
+          </Route>
+
           <Route path="/add-employee" element={<AddEmployee />} />
           <Route path="/manage-projects" element={<ManageProjects />} />
         </Routes>
       </main>
-      <Outlet />
     </div>
   );
 };
