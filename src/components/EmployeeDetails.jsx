@@ -36,12 +36,9 @@ const EmployeeDetails = () => {
   return (
     <div>
       <h1>Employee Info</h1>
-      <p>
-        {" "}
-        Name :{employeeDetail?.name ? employeeDetail.name : "hfhjgejhfgesjh"}
-      </p>
+      <p> Name :{employeeDetail?.name ? employeeDetail.name : "testName"}</p>
       <p>Id :{employeeDetail?.id}</p>
-      {employeeDetail?.projectList.length == 0
+      {employeeDetail || employeeDetail?.projectList.length == 0
         ? "No projects"
         : employeeDetail?.projectList?.map((project) => (
             <div key={project?.id}>
@@ -49,9 +46,11 @@ const EmployeeDetails = () => {
             </div>
           ))}
 
-      <Link to={`/manage-projects`}>Manage Projects</Link>
+      <Link to={`/manage-projects`} state={{ employeeDetail }}>
+        Manage Projects
+      </Link>
       <button onClick={deletehandle}>Delete</button>
-      <Link to={".."}>Back</Link>
+      <Link to={"/"}>Back</Link>
     </div>
   );
 };
